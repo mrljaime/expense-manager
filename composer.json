@@ -9,13 +9,13 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/dbal": "^3",
-        "doctrine/doctrine-bundle": "^2.16",
-        "doctrine/doctrine-migrations-bundle": "^3.4",
-        "doctrine/orm": "^3.5",
+        "doctrine/dbal": "^3.10.2",
+        "doctrine/doctrine-bundle": "^2.16.2",
+        "doctrine/doctrine-migrations-bundle": "^3.4.2",
+        "doctrine/orm": "^3.5.2",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
-        "symfony/flex": "^2",
+        "symfony/flex": "^2.8.2",
         "symfony/framework-bundle": "7.3.*",
         "symfony/monolog-bundle": "^3.10",
         "symfony/runtime": "7.3.*",
@@ -60,7 +60,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "lint": "vendor/bin/php-cs-fixer fix --dry-run",
+        "lint-fix": "vendor/bin/php-cs-fixer fix"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -73,6 +75,11 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.64"
+        "friendsofphp/php-cs-fixer": "^3.87.2",
+        "phpunit/phpunit": "^12.3.11",
+        "symfony/browser-kit": "7.3.*",
+        "symfony/css-selector": "7.3.*",
+        "symfony/maker-bundle": "^1.64",
+        "zenstruck/foundry": "^2.6.3"
     }
 }

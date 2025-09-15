@@ -35,6 +35,33 @@
             "migrations/.gitignore"
         ]
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "3.87",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "be2103eb4a20942e28a6dd87736669b757132435"
+        },
+        "files": [
+            ".php-cs-fixer.dist.php"
+        ]
+    },
+    "phpunit/phpunit": {
+        "version": "12.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "11.1",
+            "ref": "c6658a60fc9d594805370eacdf542c3d6b5c0869"
+        },
+        "files": [
+            ".env.test",
+            "phpunit.dist.xml",
+            "tests/bootstrap.php",
+            "bin/phpunit"
+        ]
+    },
     "symfony/console": {
         "version": "7.3",
         "recipe": {
@@ -101,6 +128,18 @@
             "config/packages/monolog.yaml"
         ]
     },
+    "symfony/property-info": {
+        "version": "7.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "7.3",
+            "ref": "dae70df71978ae9226ae915ffd5fad817f5ca1f7"
+        },
+        "files": [
+            "config/packages/property_info.yaml"
+        ]
+    },
     "symfony/routing": {
         "version": "7.3",
         "recipe": {
@@ -112,6 +151,19 @@
         "files": [
             "config/packages/routing.yaml",
             "config/routes.yaml"
+        ]
+    },
+    "zenstruck/foundry": {
+        "version": "2.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.6",
+            "ref": "50321333fa5e12324ac1d5a2aeb65fb276a6f9c8"
+        },
+        "files": [
+            "config/packages/zenstruck_foundry.yaml",
+            "src/Story/AppStory.php"
         ]
     }
 }
