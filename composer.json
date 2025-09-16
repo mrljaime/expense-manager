@@ -15,6 +15,7 @@
         "doctrine/orm": "^3.5.2",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
+        "symfony/expression-language": "7.3.*",
         "symfony/flex": "^2.8.2",
         "symfony/framework-bundle": "7.3.*",
         "symfony/monolog-bundle": "^3.10",
@@ -56,13 +57,16 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "git config core.hooksPath .githooks || true"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "git config core.hooksPath .githooks || true"
         ],
         "lint": "vendor/bin/php-cs-fixer fix --dry-run",
-        "lint-fix": "vendor/bin/php-cs-fixer fix"
+        "lint-fix": "vendor/bin/php-cs-fixer fix",
+        "setup-hooks": "git config core.hooksPath .githooks"
     },
     "conflict": {
         "symfony/symfony": "*"

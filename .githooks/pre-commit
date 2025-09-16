@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Pre-commit hook to run code style fixer inside Docker before a commit is created.
+# It will run the fixer and prevent the commit if changes were made, so you can review and stage them.
+
+set -euo pipefail
+
+# Move to repository root (this script may be run from .git/hooks directory)
+REPO_ROOT_DIR="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT_DIR"
+
+run_in_compose() {
+  # Prefer exec if the php service is already running, otherwise use run --rm
+  if docker compose ps --status running php >/dev/null 2>&1; then
+    docker compose exec -T php composer lint-fix
+  else
+    echo "php service is not running. Using 'docker compose run --rm'..."
+    docker compose run --rm -T php composer lint-fix
+  fi
+}
+
+# Ensure docker and docker compose are available
+if ! command -v docker >/dev/null 2>&1; then
+  echo "[pre-commit] Docker is not installed or not in PATH. Skipping lint-fix."
+  exit 0
+fi
+
+# Run the fixer
+echo "[pre-commit] Running code style fixer inside Docker..."
+if ! run_in_compose; then
+  echo "[pre-commit] Failed to run 'composer lint-fix' inside Docker." >&2
+  exit 1
+fi
+
+# Check if the fixer modified any files
+if ! git diff --quiet -- . ':!vendor' ':!var' ; then
+  echo "[pre-commit] Code style fixer modified files. Please review the changes, stage them, and commit again."
+  echo "[pre-commit] You can run it manually with: docker compose exec php composer lint-fix"
+  exit 1
+fi
+
+exit 0
