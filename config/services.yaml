@@ -15,6 +15,14 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/'
+        exclude:
+          - '../src/Entity'
+          - '../src/Util'
 
+    App\Model\Expression\ExpressionLanguage:
+      public: true
+      arguments:
+        - '@cache.app'
+        - [ '@App\Model\Import\Expression\ImportExpressionProvider' ]
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -40,7 +40,6 @@ class Account
 
     #[ORM\ManyToOne(
         targetEntity: User::class,
-        fetch: 'EAGER',
         inversedBy: 'accounts'
     )]
     private User $user;

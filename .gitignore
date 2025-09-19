@@ -25,3 +25,8 @@ var/log
 /phpunit.xml
 /.phpunit.cache/
 ###< phpunit/phpunit ###
+
+###> Not share csv files from bank transactions ###
+tests/Resources/mercado_pago.csv
+tests/Resources/santander_debito.csv
+###< Not share csv files from bank transactions ###
